@@ -7,12 +7,100 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use App\Product;
+use App\Detail;
+use App\Category;
 
 class DashboardController extends Controller
 {
     function index(){
         $users = DB::table('users')->get();
-        // $products = DB:: table('products')->get();
         return view("admin.dashboard",['users'=>$users]);
+    }
+    function showProducts(){
+        $products = Product::all();
+        return view('admin.product.index',['products' => $products]);
+    }
+    function showCategories(){
+        $categories = Category::all();
+        return view('admin.category.index',['categories' => $categories]);
+    }
+
+    function destroyProduct($id){
+        DB::table('details')->where ('product_id',$id)->delete();
+        DB::table('carts')->where('product_id',$id)->delete();
+        Product::find($id)->delete();
+        return redirect('/admin/products');
+    }
+
+    function destroyCategory($id){
+        Category::find($id)->delete();
+        return redirect('/admin/categories');
+    }
+
+    function editProduct($id){
+        $categories = Category::all();
+        $product = Product::find($id);
+        $product->detail;
+
+        foreach($categories as $category){
+            $category->products;
+        }
+        return view('admin.product.edit',['categories' => $categories, 'product' => $product]);
+    }
+
+    function updateProduct($id,Request $request){
+        $nameEdit = $request->nameEdit;
+        $imageEdit = $request->file("imageEdit")->store("public");
+        $priceEdit = $request->priceEdit;
+        $quantityEdit = $request->quantityEdit;
+        $detailEdit = $request->detailEdit;
+        $categoryEdit = $request->get('categoryEdit');
+
+        $product = Product::find($id);
+        $product->name = $nameEdit;
+        $product->image = $imageEdit;
+        $product->price = $priceEdit;
+        $product->quantity = $quantityEdit;
+        $product->star = 4;
+        $product->category_id = $categoryEdit;
+        $product->save();
+
+        $idProduct = $product->id;
+        DB::table('details')->where('product_id', $idProduct)->update(
+            ['product_id'=>$idProduct,'content'=>$detailEdit]);
+        return redirect('/admin/products');
+    }
+
+    function createProduct(){
+        $categories = Category::all();
+        foreach($categories as $category){
+            $category->products;
+        }
+        return view('admin.product.create',['categories' => $categories]);
+    }
+
+    function storeProduct(Request $request){
+        $name = $request->name;
+        $image = $request->file("image")->store("public");
+        $content = $request->detail;
+        $price = $request->price;
+        $quantity = $request->quantity;
+        $category = $request->get('category');
+
+        $product = new Product;
+        $product->name = $name;
+        $product->image = $image;
+        $product->price = $price;
+        $product->quantity = $quantity;
+        $product->star = 4;
+        $product->category_id = $category;
+        $product->save();
+
+        $detail = new Detail;
+        $detail->product_id = $product->id;
+        $detail->content = $content;
+        $detail->save();
+        // redirect('/admin/products');
     }
 }

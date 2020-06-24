@@ -13,4 +13,9 @@ class Product extends Model
     public function detail(){
      return $this->hasOne("App\Detail","product_id","id");
     }
+
+    function getDisplayPrice(){
+        $formatedPrice = number_format($this->price,0,',','.');
+        return $formatedPrice . " VND ";
+    }
 }

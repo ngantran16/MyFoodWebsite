@@ -9,7 +9,6 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link rel="stylesheet" href="../css/home.css">
 </head>
-
 <body>
     @include('partials\header')
     @include('partials\carousel')
@@ -19,20 +18,25 @@
                 @foreach ($products as $product)
                     <div class = "grid-item">
                         <div class="card" style="width: 30rem;">
-                        <img class="card-img-top" src='{{'storage/'.$product->image }}' alt="Card image cap">
+                        <img class="card-img-top" src='{{'storage/'.$product->image }}' style = "height:250px;">
                             <div class="card-body">
-                            <h5 class="card-title"> {{ $product->name }} </h5>
-                            <p class="card-text"> <span>{{ $product->price }} $ </span> <span class = "old_price"><strike>{{ $product->old_price }}</strike> $ </span> </p>
+                            <h4 class="card-title"> {{ $product->name }} </h4>
+                            <div class="stars">
+                                @for ($i = 0; $i < $product->star; $i++)
+                                    <span class="fa fa-star checked"></span>
+                                @endfor
+                            </div>
+                            <p class="card-text"> <span>{{ $product->getDisplayPrice() }} vnđ</span> </p>
 
                             <div class = "row">
                                 <div class = "col-sm 6">
-                                    <form action="/home/addToCart/{{ $product->id }}" method="POST">
+                                    <form action="/addToCart/{{ $product->id }}" method="POST">
                                         @csrf
                                         <button class="btn btn-warning" type="submit">Mua</button>
                                     </form>
                                 </div>
                                 <div class = "col-sm 6">
-                                    <form action="/home/details/{{ $product->id }}" method="POST">
+                                    <form action="/details/{{ $product->id }}" method="POST">
                                         @csrf
                                         <button class="btn btn-warning">Chi tiết</button>
                                     </form>

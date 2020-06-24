@@ -13,14 +13,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-        <a class="nav-link header" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+        <a class="nav-link header" href="#">Home page <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-        <a class="nav-link header" href="#">Liên hệ</a>
+        <a class="nav-link header" href="#">Contact</a>
         </li>
         <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle header" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Menu chính
+            Main menu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Action</a>
@@ -30,7 +30,7 @@
         </div>
         </li>
         <li class="nav-item active">
-        <a class="nav-link header" href="#">Đặt món</a>
+        <a class="nav-link header" href="#">Order</a>
         </li>
     </ul>
     <form class="form-inline" action="/search" method="GET">
