@@ -17,6 +17,9 @@
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input id="name" class="form-control" name = "name">
+                @error('name')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -31,21 +34,33 @@
             <div class="form-group">
                 <label for="price">Price:</label>
                 <input id="price" class="form-control" name = "price">
+                @error('price')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="quantity">Quantity:</label>
                 <input id="quantity" class="form-control" name = "quantity">
+                @error('quantity')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="image">Image:</label>
                 <input class="form-control" type = "file" name = "image">
+                @error('image')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="description">Detail:</label>
                 <input class="form-control" name = "detail" style="height:100px;">
+                @error('detail')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
             <button class="btn btn-primary" type = "submit">Submit</button>
         </form>

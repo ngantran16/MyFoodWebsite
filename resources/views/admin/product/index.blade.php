@@ -4,61 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-    @include('partials\menu')
-        <div class="col pt-2">
+    <div class="row">
+        <div class="col-xs-5 .col-sm-6 .col-lg-4" style="background-color:lavender;">
+            @include('partials/menu')
+        </div>
+        <div class="col-xs-7 .col-sm-6 .col-lg-8" style="background-color:lavender;">
             <h3 style="text-align: center;">PRODUCT'S INFORMATION</h3>
-            <div class = "container">
-                <a href="/product/create">Add a product</a>
-                <table class="table table-striped">
-                    <thead>
+    <div class = "container">
+        <a href="/product/create">Add a product</a>
+        <table class="table table-striped" style="width:850px;">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <?php $i = 1?>
+            <tbody>
+                @foreach ($products as $product)
                     <tr>
-                        <th>STT</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Image</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <td> {{ $i++ }} </td>
+                        <td> {{ $product->name }} </td>
+                        <td> {{ $product->category->name }}</td>
+                        <td> <img src="{{'/storage/'.$product->image}}" width="100px" height="60px">
+                        </td>
+                        <td> {{ $product->price }} </td>
+                        <td> {{ $product->quantity }} </td>
+                        <td>
+                            <form action="{{'/admin/product/'.$product->id.'/edit'}}" method="GET">
+                                <button type="submit" class ="btn btn-link">Edit</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{'/admin/product/'.$product->id}}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" class = "btn btn-link">Delete</button>
+                            </form>
+                        </td>
                     </tr>
-                    </thead>
-                    <?php $i = 1?>
-                    <tbody>
-                        @foreach ($products as $product)
-                            <tr>
-                                <td> {{ $i++ }} </td>
-                                <td> {{ $product->name }} </td>
-                                <td> {{ $product->category->name }}</td>
-                                <td> <img src="{{'/storage/'.$product->image}}" width="100px" height="60px">
-                                </td>
-                                <td> {{ $product->price }} </td>
-                                <td> {{ $product->quantity }} </td>
-                                <td>
-                                    <form action="{{'/admin/product/'.$product->id.'/edit'}}" method="GET">
-                                        <button type="submit" class ="btn btn-link">Edit</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="{{'/admin/product/'.$product->id}}" method="POST">
-                                        @csrf
-                                        @method("DELETE")
-                                        <button type="submit" class = "btn btn-link">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
+                @endforeach
+            </tbody>
+        </table>
+    </div>
         </div>
     </div>
-</div>
 </body>
 </html>

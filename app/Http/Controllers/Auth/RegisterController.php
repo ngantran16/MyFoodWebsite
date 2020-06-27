@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterController extends Controller
 {
@@ -13,12 +15,13 @@ class RegisterController extends Controller
     return view('auth.register');
    }
 
-   function register(Request $request){
+   function register(RegisterRequest $request){
     $username= $request->username;
     $password =$request->password;
     $email = $request->email;
     $address = $request->address;
     $role="user";
+    $request->validated();
 
     $hashPassword = Hash::make($password);
 

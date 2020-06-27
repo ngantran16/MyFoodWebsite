@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-    @include('partials\menu')
-        <div class="col pt-2">
+    <div class="row">
+        <div class="col-xs-5 .col-sm-6 .col-lg-4" style="background-color:lavender;">
+            @include('partials/menu')
+        </div>
+        <div class="col-xs-7 .col-sm-6 .col-lg-8" style="background-color:lavender;">
             <h3 style="text-align: center;">CATEGORIES' INFORMATION</h3>
             <div class = "container">
                 <table class="table table-striped">
@@ -46,9 +50,7 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
-    </div>
     </div>
 </body>
 </html>

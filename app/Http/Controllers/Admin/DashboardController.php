@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CreateRequest;
+
 use App\Product;
 use App\Detail;
 use App\Category;
@@ -80,12 +82,13 @@ class DashboardController extends Controller
         return view('admin.product.create',['categories' => $categories]);
     }
 
-    function storeProduct(Request $request){
+    function storeProduct(CreateRequest $request){
         $name = $request->name;
         $image = $request->file("image")->store("public");
         $content = $request->detail;
         $price = $request->price;
         $quantity = $request->quantity;
+        $request->validated();
         $category = $request->get('category');
 
         $product = new Product;
@@ -101,6 +104,6 @@ class DashboardController extends Controller
         $detail->product_id = $product->id;
         $detail->content = $content;
         $detail->save();
-        // redirect('/admin/products');
+        return redirect('/admin/products');
     }
 }

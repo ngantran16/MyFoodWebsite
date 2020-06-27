@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/auth/login', "Auth\LoginController@index")->name('auth.login');
 Route::post('/auth/login', "Auth\LoginController@login");
 Route::get('/admin/dashboard','Admin\DashBoardController@index')->name('admin.dashboard');
-Route::get('/home','User\HomeController@index')->name('home');
+Route::get('/home','User\HomeController@index')->name('homepage');
 
 Route::get('/auth/register', "Auth\RegisterController@index")->name('auth.register');
 Route::post('/auth/register', "Auth\RegisterController@register");
@@ -44,4 +44,8 @@ Route::delete('/cart/{id}',"User\CartController@destroyCartPro");
 Route::get('/product/create',"Admin\DashboardController@createProduct");
 Route::post('/admin/products',"Admin\DashboardController@storeProduct");
 
-Route::post('/cart/plus/{id}',"User\CartController@plusQuantity");
+Route::post('/cart/update/{id}',"User\CartController@updateQuantity");
+
+Route::get('/order',"User\OrderController@index");
+
+Route::post('/payment',"User\OrderController@paymentProduct");

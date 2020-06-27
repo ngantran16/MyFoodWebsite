@@ -5,21 +5,22 @@
         @endif
     </p>
     <br><br>
-    <a class="navbar-brand" href="#"><a href="/home"><img class = "logo" src="/img/logo.png" width="100px" height="80px"></a></a>
+    <a class="navbar-brand" href="#"><a href="/home">
+    <img class = "logo" src="/img/logo.png" width="100px" height="80px"></a></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-        <a class="nav-link header" href="#">Home page <span class="sr-only">(current)</span></a>
+            <a class="nav-link header" href="#" style="margin-right:30px;">Home page <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-        <a class="nav-link header" href="#">Contact</a>
+            <a class="nav-link header" href="#" style="margin-right:30px;">Contact</a>
         </li>
         <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle header" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle header" href="#" style="margin-right:30px;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Main menu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -40,9 +41,14 @@
     </form>
     </div>
 </nav>
-<form action="user/cart" method="get">
+<form action="/cart" method="get">
     @csrf
-    <button type="submit" class="btn cart"><img class = "img_cart" src="/img/cart.png" alt=""></button>
+    <button type="submit" class=" btn-link cart" style="color:white;">
+        <i class="fas fa-shopping-cart fa-2x"></i>
+        <div style="width:25px; height:25px; border-radius:20px; background-color: red; position: relative; margin-left:50px; margin-top:-15px;">
+            <span style="color:white;  ">0</span>
+        </div>
+    </button>
 </form>
 
 @if(Auth::user())
@@ -53,5 +59,8 @@
 @else
     <form action="/auth/login" method="get">
         <button type="submit" class = "btn button">Login</button>
+    </form>
+    <form action="/auth/register" method="get">
+        <button type="submit" class = "btn register">Register</button>
     </form>
 @endif

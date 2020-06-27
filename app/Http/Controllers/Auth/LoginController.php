@@ -19,7 +19,7 @@ class LoginController extends Controller
             if($user->role =="admin"){
                 return redirect()->route('admin.dashboard');
             }else{
-                return redirect()->route('home');
+                return redirect()->route('homepage');
             }
         }else{
             return redirect()->route("auth.login",["error"=>"Invallid username or password"]);

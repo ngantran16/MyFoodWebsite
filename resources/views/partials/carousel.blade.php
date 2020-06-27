@@ -1,4 +1,4 @@
-<div id="myCarousel" class="carousel slide" data-ride="carousel" style="">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="position: relative; top:-19px;">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -9,15 +9,15 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
-        <img src="img/background.jpg" style="width:100%;">
+        <img src="/img/background.jpg" style="width:100%;">
         </div>
 
         <div class="item">
-        <img src="img/background2.jpg" style="width:100%;">
+        <img src="/img/background2.jpg" style="width:100%;">
         </div>
 
         <div class="item">
-        <img src="img/background3.jpg" style="width:100%;">
+        <img src="/img/background3.jpg" style="width:100%;">
         </div>
     </div>
 

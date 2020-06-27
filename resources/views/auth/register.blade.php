@@ -11,8 +11,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="card" style = "background-color:#EEE9E9;">
-        <article class="card-body mx-auto" style="max-width: 500px;">
+        <div class="card" style = "background-color:#EEE9E9; width:500px; margin-left:300px;">
+        <article class="card-body" >
             <h4 class="card-title mt-3 text-center">Create Account</h4>
             <p class="text-center">Get started with your free account</p>
             <p>
@@ -28,36 +28,41 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="username" type="text" name = "usernameForm">
+                    <input class="form-control" placeholder="username" type="text" name = "username">
                 </div> <!-- form-group// -->
+                @error('username')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="password" type="password" name = "passwordForm">
+                    <input class="form-control" placeholder="password" type="password" name = "password">
                 </div> <!-- form-group// -->
-
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <input  class="form-control" placeholder="Full name" type="text" name = "fullnameForm">
-                </div> <!-- form-group// -->
+                @error('password')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input  class="form-control" placeholder="Email address" type="email" name = "email">
+                    <input  class="form-control" placeholder="Email" type="email" name = "email">
                 </div> <!-- form-group// -->
+                @error('email')
+                    <div style="color:red; margin-top:20px;">{{ $message }}</div>
+                @enderror
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input  class="form-control" placeholder="Phone number" name = "phonenumber">
+                    <input  class="form-control" placeholder="Address" type="text" name = "address">
                 </div> <!-- form-group// -->
+                @error('address')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
