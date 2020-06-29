@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
+use App\Cart;
 
 class HomeController extends Controller
 {
@@ -21,7 +23,15 @@ class HomeController extends Controller
             $totalPage = round(count(Product::all())/5)-1;
             return redirect('/home/?page='.$totalPage);
         }
+        $id_user = Auth::user()->id;
+        $cart = Cart::where('id_user','=',$id_user)->get();
+        $quantity = 0;
+        foreach($cart as $item){
+            $quantity += $item->quantity;
+        }
+        $request->session()->put('quantity', $quantity);
 
+        $products = $this->sortdesc();
         return view('user.home',['products' => $products, "page" => $page]);
     }
     function details($id){
@@ -29,4 +39,15 @@ class HomeController extends Controller
         $product = Product::find($id);
         return view('user.detail',['details'=>$details, 'product' => $product]);
     }
+    function getSearch(Request $request){
+        $result = $request->result;
+        $products = Product::where('name','like','%'.$result.'%')->take(12)->paginate(6);
+        return view('user.search',['products'=>$products, 'result'=>$result]);
+    }
+
+    function sortdesc(){
+        $products = Product::all()->orderBy('price')->get();
+        return $products;
+    }
+
 }

@@ -11,14 +11,11 @@
 </head>
 <body>
     @include('partials\header')
-    @include('partials\carousel')
         <div class = "container">
-            <h1 class = "title">MÓN MỚI MỖI NGÀY</h1>
-            <form method="get" action="/home">
-                @csrf
-                <button class= "asc" name="asc"><i class="fas fa-sort-down fa-2x"></i></button>
-                <button class= "des" name="des"><i class="fas fa-sort-up fa-2x"></i></button>
-            </form>
+            @if ($products->isEmpty())
+            <h4>No search results for the keyword: <span style="color:red; font-weight:bold;"> {{ $result }} </span> </h4>
+            @else
+            <h4>Search results for keyword: <span style="color:red; font-weight:bold;"> {{ $result }} </span> </h4>
             <div class = "grid-container">
                 @foreach ($products as $product)
                     <div class = "grid-item">
@@ -52,10 +49,8 @@
                     </div>
                 @endforeach
             </div>
-            <a class="previous" href="/home/?page={{$page-1}}">&laquo; Previous</a>
-            <a class="next" href="/home/?page={{$page+1}}">Next &raquo;</a>
+        @endif
         </div>
-        @include('partials/footer')
 </body>
 </html>
 <script>

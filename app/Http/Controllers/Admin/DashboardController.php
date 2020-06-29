@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\CreateRequest;
-
 use App\Product;
 use App\Detail;
 use App\Category;
+use App\User;
+use App\Order;
 
 class DashboardController extends Controller
 {
@@ -26,6 +27,14 @@ class DashboardController extends Controller
     function showCategories(){
         $categories = Category::all();
         return view('admin.category.index',['categories' => $categories]);
+    }
+    function showUsers(){
+        $users = User::all();
+        return view('admin.user.index',['users' => $users]);
+    }
+    function showOrders(){
+        $orders = Order::all();
+        return view('admin.product.orders',['orders' => $orders]);
     }
 
     function destroyProduct($id){

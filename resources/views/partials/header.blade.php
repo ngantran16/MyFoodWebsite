@@ -14,18 +14,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link header" href="#" style="margin-right:30px;">Home page <span class="sr-only">(current)</span></a>
+            <a class="nav-link header" href="/home" style="margin-right:30px;">Home page <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
             <a class="nav-link header" href="#" style="margin-right:30px;">Contact</a>
         </li>
         <li class="nav-item dropdown active">
             <a class="nav-link dropdown-toggle header" href="#" style="margin-right:30px;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Main menu
+            Category
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">BANH MI</a>
+            <a class="dropdown-item" href="#">COM DIA</a>
+            <a class="dropdown-item" href="#">MON CHAY</a>
+            <a class="dropdown-item" href="#">BUN PHO</a>
             <div class="dropdown-divider header"></div>
             <a class="dropdown-item" href="#">Something else here</a>
         </div>
@@ -46,7 +48,13 @@
     <button type="submit" class=" btn-link cart" style="color:white;">
         <i class="fas fa-shopping-cart fa-2x"></i>
         <div style="width:25px; height:25px; border-radius:20px; background-color: red; position: relative; margin-left:50px; margin-top:-15px;">
-            <span style="color:white;  ">0</span>
+            <span style="color:white;  ">
+                @if (Session::has('quantity'))
+                    <span>{{ Session::get('quantity') }}</span>
+                @else
+                    <span>0</span>
+                @endif
+            </span>
         </div>
     </button>
 </form>

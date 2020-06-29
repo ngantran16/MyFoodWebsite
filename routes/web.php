@@ -28,6 +28,8 @@ Route::post('auth/logout',"Auth\LoginController@logout");
 
 Route::get('/admin/products',"Admin\DashBoardController@showProducts");
 Route::get('/admin/categories',"Admin\DashBoardController@showCategories");
+Route::get('/admin/users',"Admin\DashBoardController@showUsers");
+Route::get('/admin/orders',"Admin\DashBoardController@showOrders");
 
 Route::delete('/admin/product/{id}', "Admin\DashBoardController@destroyProduct");
 Route::delete('/admin/category/{id}',"Admin\DashBoardController@destroyCategory");
@@ -49,3 +51,6 @@ Route::post('/cart/update/{id}',"User\CartController@updateQuantity");
 Route::get('/order',"User\OrderController@index");
 
 Route::post('/payment',"User\OrderController@paymentProduct");
+
+
+Route::get('/search',"User\HomeController@getSearch");

@@ -118,7 +118,24 @@ a:hover {
 .next {
     background-color: orange;
     color: white;
+}
+.asc{
+    position: relative;
+    float:right;
+    border: none;
+    margin-right:35px;
+    background-color: orange;
+    color:white;
 
+}
+.des{
+    position: relative;
+    float:right;
+    border: none;
+    color:white;
+    background-color:#E55B3C	;
+    /* margin-top:-32px;
+    margin-right:-29px; */
 }
 
 

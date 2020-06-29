@@ -11,45 +11,42 @@
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-    <div class="row">
-        <div class="col-sm-3" style="background-color:lavender;">
-            @include('partials/menu')
-        </div>
-        <div class="col-sm-9" style="background-color:lavender;">
-            <h3 style="text-align: center;">PRODUCT'S INFORMATION</h3>
-    <div class = "container">
-        <a href="/product/create">Add a product</a>
+<div class="row">
+    <div class="col-sm-3" style="background-color:lavender;">
+        @include('partials/menu')
+    </div>
+    <div class="col-sm-9" style="background-color:lavender;">
+        <h3 style="text-align: center;">USERS' INFORMATION</h3>
+        <div class = "container">
+        <a href="/auth/register">Add a user</a>
         <table class="table table-striped" style="width:100%;">
             <thead>
             <tr>
                 <th>STT</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Quantity</th>
+                <th>username</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Role</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
             </thead>
             <?php $i = 1?>
             <tbody>
-                @foreach ($products as $product)
+                @foreach ($users as $user)
                     <tr>
                         <td> {{ $i++ }} </td>
-                        <td> {{ $product->name }} </td>
-                        <td> {{ $product->category->name }}</td>
-                        <td> <img src="{{'/storage/'.$product->image}}" width="100px" height="60px">
-                        </td>
-                        <td> {{ $product->price }} </td>
-                        <td> {{ $product->quantity }} </td>
+                        <td> {{ $user->username }} </td>
+                        <td> {{ $user->email }}</td>
+                        <td> {{ $user->address }} </td>
+                        <td> {{ $user->role }} </td>
                         <td>
-                            <form action="{{'/admin/product/'.$product->id.'/edit'}}" method="GET">
+                            <form action="{{'/admin/user/'.$user->id.'/edit'}}" method="GET">
                                 <button type="submit" class ="btn btn-link">Edit</button>
                             </form>
                         </td>
                         <td>
-                            <form action="{{'/admin/product/'.$product->id}}" method="POST">
+                            <form action="{{'/admin/user/'.$user->id}}" method="POST">
                                 @csrf
                                 @method("DELETE")
                                 <button type="submit" class = "btn btn-link">Delete</button>
@@ -60,7 +57,7 @@
             </tbody>
         </table>
     </div>
-        </div>
-    </div>
+</div>
+</div>
 </body>
 </html>

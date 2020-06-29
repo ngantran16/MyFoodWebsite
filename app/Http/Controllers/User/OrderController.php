@@ -17,7 +17,6 @@ class OrderController extends Controller
     function index(){
         $id_user = Auth::user()->id;
         $carts = Cart::where('id_user','=',$id_user)->get();
-
         foreach($carts as $cart){
             $cart->products;
         }
@@ -25,7 +24,6 @@ class OrderController extends Controller
     }
 
     function paymentProduct(OrderRequest $request){
-
         $city = $request->city;
         $firstname = $request->firstname;
         $lastname = $request->lastname;
@@ -39,29 +37,38 @@ class OrderController extends Controller
         $address = $address.'  '.$city;
 
         $carts = Cart::where('id_user','=',$id_user)->get();
-
         foreach($carts as $cart){
             $cart->products;
         }
 
-        $pros = "";
         $total = 0;
+        $i =0;
+        $arr=[];
         foreach($carts as $cart){
-             foreach($cart->products as $item){
-                 $array = json_encode($item->name,true);
-                 $pros .= $array.',';
-                 $total += $cart->quantity * $item->price;
-
-                 //update quantity
-                 $product = Product::find($item->id);
-                 $product->quantity = $item->quantity - $cart->quantity;
-                 $product->save();
+            $arr[$i] = new Product;
+            foreach($cart->products as $item){
+                $arr[$i]->id = $item->id;
+                $arr[$i]->name = $item->name;
+                $arr[$i]->price = $item->price;
+                $arr[$i]->quantity = $cart->quantity;
+                $total += $cart->quantity * $item->price;
+                //update quantity
+                $product = Product::find($item->id);
+                $product->quantity = $item->quantity - $cart->quantity;
+                $product->save();
              }
+            $i++;
         }
+       $list=[];
+        for($j =0; $j<$i; $j++){
+            array_push($list,$arr[$j]);
+        }
+        $productsInString = json_encode($list);
+
         $order = new Order;
         $order->id_user = $id_user;
         $order->name = $name;
-        $order->product = $pros;
+        $order->product = $productsInString;
         $order->address = $address;
         $order->email = $email;
         $order->phone_number = $phonenumber;

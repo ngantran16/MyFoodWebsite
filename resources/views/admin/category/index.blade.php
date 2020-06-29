@@ -12,13 +12,13 @@
 </head>
 <body>
     <div class="row">
-        <div class="col-xs-5 .col-sm-6 .col-lg-4" style="background-color:lavender;">
+        <div class="col-sm-3" style="background-color:lavender;">
             @include('partials/menu')
         </div>
-        <div class="col-xs-7 .col-sm-6 .col-lg-8" style="background-color:lavender;">
+        <div class="col-sm-9" style="background-color:lavender;">
             <h3 style="text-align: center;">CATEGORIES' INFORMATION</h3>
             <div class = "container">
-                <table class="table table-striped">
+                <table class="table table-striped" style="width:100%;">
                     <thead>
                     <tr>
                         <th>STT</th>

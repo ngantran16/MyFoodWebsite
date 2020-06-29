@@ -10,7 +10,7 @@ use App\Cart;
 
 class CartController extends Controller
 {
-    function index(){
+    function index(Request $request){
         $id_user = Auth::user()->id;
         $cart = DB::table('carts')
                     ->join('users','carts.id_user','=','users.id')
@@ -18,6 +18,14 @@ class CartController extends Controller
                     ->where ('users.id','=',$id_user)
                     ->select('products.id','products.image','products.name','products.price', 'carts.quantity')
                     ->get();
+
+        $cts = Cart::where('id_user','=',$id_user)->get();
+        $quantity = 0;
+        foreach($cts as $item){
+            $quantity += $item->quantity;
+        }
+        $request->session()->put('quantity', $quantity);
+
         return view("user.cart",['carts'=>$cart]);
     }
     function addToCart($id_pro){
@@ -53,7 +61,11 @@ class CartController extends Controller
             $quantity = $quantity + 1;
         }
         elseif (isset($_POST['minus'])){
-            $quantity = $quantity - 1;
+            if ($quantity == 1){
+                $quantity = 1;
+            }else{
+                $quantity = $quantity - 1;
+            }
         }
 
         $cart = Cart::where('product_id','=',$id, 'and', 'user_id','=',$id_user)->first();

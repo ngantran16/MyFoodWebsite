@@ -1,6 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small footer" style="background-color: #333333; color:white;">
-
+<footer class="page-footer font-small footer" style="background-color: #333333; color:white;position: relative;left: 0;bottom: 0;">
     <!-- Footer Links -->
     <div class="container text-center text-md-left">
 
@@ -108,13 +107,7 @@
           </div>
 
         </div>
-        <!-- Grid column -->
-
       </div>
-      <!-- Grid row -->
-
     </div>
-    <!-- Footer Links -->
-
   </footer>
-  <!-- Footer -->
+
