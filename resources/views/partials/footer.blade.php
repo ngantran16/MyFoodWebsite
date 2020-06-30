@@ -8,11 +8,11 @@
 
         <!-- Grid column -->
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h4 class="text-uppercase mb-4 font-weight-bold">BÁNH MÌ NGON</h4>
-          <p style="font-weight:bold; color:#FF6633;">Bánh mới mỗi ngày</p>
+          <h4 class="text-uppercase mb-4 font-weight-bold">BANH MI NGON</h4>
+          <p style="font-weight:bold; color:#FF6633;">New foods every day</p>
           <p><i class="fas fa-envelope-square"></i> banhmi@gmail.com</p>
           <p><i class="fas fa-phone"></i>(+84) 39 7735 352</p>
-          <p><i class="fas fa-map-marker-alt"></i> 101B Lê Hữu Trác, Sơn Trà, Đà Nẵng</p>
+          <p><i class="fas fa-map-marker-alt"></i> 101B Le Huu Trac, Son Tra, Đa Nang</p>
         </div>
         <!-- Grid column -->
 
@@ -20,11 +20,11 @@
 
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-          <h4 class="text-uppercase mb-4 font-weight-bold">GIỜ MỞ CỬA</h4>
-          <p style="font-weight:bold; color:#FF6633;">Thứ 2 - Thứ 6</p>
+          <h4 class="text-uppercase mb-4 font-weight-bold">BUSINESS HOURS</h4>
+          <p style="font-weight:bold; color:#FF6633;">Monday - Friday</p>
           <p>08:00 - 12:00</p>
           <p>13:00 - 17:00</p>
-          <p style="font-weight:bold; color:#FF6633;">Thứ bảy</p>
+          <p style="font-weight:bold; color:#FF6633;">Saturday</p>
           <p>09:00 - 11:00</p>
           <p>14:00 - 16:00</p>
         </div>
@@ -34,11 +34,11 @@
 
         <!-- Grid column -->
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-            <h4 class="text-uppercase mb-4 font-weight-bold">BÁNH MÌ NGON</h4>
-            <p style="font-weight:bold; color:#FF6633;">Bánh mới mỗi ngày</p>
+            <h4 class="text-uppercase mb-4 font-weight-bold">BANH MI NGON</h4>
+            <p style="font-weight:bold; color:#FF6633;">New foods every day</p>
             <p><i class="fas fa-envelope-square"></i> banhmi@gmail.com</p>
             <p><i class="fas fa-phone"></i>(+84) 39 7735 352</p>
-            <p><i class="fas fa-map-marker-alt"></i> 101B Lê Hữu Trác, Sơn Trà, Đà Nẵng</p>
+            <p><i class="fas fa-map-marker-alt"></i> 101B Le Huu Trac, Son Tra, Đa Nang</p>
         </div>
 
         <!-- Grid column -->
@@ -46,11 +46,11 @@
 
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-            <h4 class="text-uppercase mb-4 font-weight-bold">GIỜ MỞ CỬA</h4>
-            <p style="font-weight:bold; color:#FF6633;">Thứ 2 - Thứ 6</p>
+            <h4 class="text-uppercase mb-4 font-weight-bold">BUSINESS HOURS</h4>
+            <p style="font-weight:bold; color:#FF6633;">Monday - Friday</p>
             <p>08:00 - 12:00</p>
             <p>13:00 - 17:00</p>
-            <p style="font-weight:bold; color:#FF6633;">Thứ bảy</p>
+            <p style="font-weight:bold; color:#FF6633;">Saturday</p>
             <p>09:00 - 11:00</p>
             <p>14:00 - 16:00</p>
         </div>

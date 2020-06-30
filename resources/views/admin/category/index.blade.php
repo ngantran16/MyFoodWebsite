@@ -35,14 +35,14 @@
                                 <td> {{ $category->name }} </td>
                                 <td>
                                     <form action="{{'/admin/category/'.$category->id.'/edit'}}" method="GET">
-                                        <button type="submit" class ="btn btn-link">Edit</button>
+                                        <button type="submit" class ="btn btn-link"><i class="fas fa-edit"></i></button>
                                     </form>
                                 </td>
                                 <td>
                                     <form action="{{'/admin/category/'.$category->id}}" method="POST">
                                         @csrf
                                         @method("DELETE")
-                                        <button type="submit" class = "btn btn-link">Delete</button>
+                                        <button type="submit" class = "btn btn-link"><i class="far fa-trash-alt"></i></button>
                                     </form>
                                 </td>
                             </tr>

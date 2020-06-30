@@ -30,7 +30,7 @@
                     <th>Phone Number</th>
                     <th>Total</th>
                     <th>Status</th>
-                    <th>Update</th>
+                    <th>View</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
@@ -48,8 +48,8 @@
                             <td> {{ $order->total }} </td>
                             <td> {{ $order->status }} </td>
                             <td>
-                                <form action="{{'/admin/order/'.$order->id.'/edit'}}" method="GET">
-                                    <button type="submit" class ="btn btn-link">Edit</button>
+                                <form action="{{'/admin/order/view/'.$order->id}}" method="GET">
+                                    <button type="submit" class ="btn btn-link">View</button>
                                 </form>
                             </td>
                             <td>

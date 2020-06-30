@@ -63,12 +63,12 @@
 
                 </div>
                 <div class = "payment">
-                    <h3 style = "position:relative; left:530px;">Cộng giỏ hàng</h3>
+                    <h3 style = "position:relative; left:530px;">Total money</h3>
                             <table class="table table-bordered" style = "width:500px; position:relative; left:530px;">
                             <thead>
                             <tr>
                                 <th>
-                                    <div class = "col-sm-6">Tạm tính:</div>
+                                    <div class = "col-sm-6">Provisional total:</div>
                                     <div class = "col-sm-6"> <?php echo number_format($total,0,',','.')." VND"; ?></div>
                                 </th>
                             </tr>
@@ -76,14 +76,14 @@
                             <tbody>
                             <tr>
                             <th>
-                                <div class = "col-sm-6">Tổng:</div>
+                                <div class = "col-sm-6">Total:</div>
                                 <div class = "col-sm-6"><?php  echo number_format($total,0,',','.')." VND"; ?></div>
                             </th>
                             </tr>
                             </tbody>
                         </table>
                         <form method="GET" action="/order">
-                            <button class="btn btn-warning btn-pay">Tiến hành thanh toán</button>
+                            <button class="btn btn-warning btn-pay">Payment</button>
                         </form>
             </div>
 </body>

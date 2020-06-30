@@ -46,14 +46,13 @@
                                 }?>
                             </span>
                         </p>
-
-                            <div class="action">
-                                <form action="/addToCart/{{ $product->id }}" method="POST">
-                                    @csrf
-                                    <button class="btn btn-warning" type="submit">Add to cart</button>
-                                    <button class="btn btn-warning" type="button"><span class="fa fa-heart"></span></button>
-                                </form>
-                            </div>
+                        <div class="action">
+                            <form action="/addToCart/{{ $product->id }}" method="POST">
+                                @csrf
+                                <button class="btn btn-warning" type="submit">Add to cart</button>
+                                <button class="btn btn-warning" type="button"><span class="fa fa-heart"></span></button>
+                            </form>
+                        </div>
                         </div>
                     </div>
                 </div>

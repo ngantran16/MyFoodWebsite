@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Http\FormRequest;
+use App\User;
 
 class RegisterController extends Controller
 {
@@ -25,7 +26,14 @@ class RegisterController extends Controller
 
     $hashPassword = Hash::make($password);
 
-    DB::table("users")->insert(['username'=>$username,'password'=>$hashPassword,'email'=>$email,'address'=>$address,'role'=>$role]);
+    $user = new User;
+    $user->username = $username;
+    $user->password = $hashPassword;
+    $user->email = $email;
+    $user->address = $address;
+    $user->role = $role;
+    $user->save();
+
     return redirect("auth/login");
    }
 }

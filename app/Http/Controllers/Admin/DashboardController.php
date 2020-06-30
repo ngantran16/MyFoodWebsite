@@ -13,11 +13,14 @@ use App\Detail;
 use App\Category;
 use App\User;
 use App\Order;
+use App\Cart;
+
+use function GuzzleHttp\json_decode;
 
 class DashboardController extends Controller
 {
     function index(){
-        $users = DB::table('users')->get();
+        $users = User::all();
         return view("admin.dashboard",['users'=>$users]);
     }
     function showProducts(){
@@ -38,8 +41,8 @@ class DashboardController extends Controller
     }
 
     function destroyProduct($id){
-        DB::table('details')->where ('product_id',$id)->delete();
-        DB::table('carts')->where('product_id',$id)->delete();
+        Detail::where('product_id',$id)->delete();
+        Cart::where('product_id',$id)->delete();
         Product::find($id)->delete();
         return redirect('/admin/products');
     }
@@ -80,6 +83,7 @@ class DashboardController extends Controller
         $idProduct = $product->id;
         DB::table('details')->where('product_id', $idProduct)->update(
             ['product_id'=>$idProduct,'content'=>$detailEdit]);
+
         return redirect('/admin/products');
     }
 
@@ -115,4 +119,12 @@ class DashboardController extends Controller
         $detail->save();
         return redirect('/admin/products');
     }
+    function orderHistory($id){
+        $order = Order::find($id);
+        $order = json_decode($order);
+        $pro = json_decode($order->product);
+        $order->product = $pro;
+        return view('admin.product.orderview',['order' => $order]);
+    }
+
 }

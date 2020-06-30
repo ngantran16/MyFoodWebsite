@@ -24,12 +24,12 @@
             Category
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">BANH MI</a>
-            <a class="dropdown-item" href="#">COM DIA</a>
-            <a class="dropdown-item" href="#">MON CHAY</a>
-            <a class="dropdown-item" href="#">BUN PHO</a>
+            <?php $categories = Session::get('categories')?>
+            @foreach ($categories as $category)
+                <a class="dropdown-item" href="/home/category/{{ $category->id }}">{{ $category->name }}</a>
+            @endforeach
             <div class="dropdown-divider header"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="/home">All products</a>
         </div>
         </li>
         <li class="nav-item active">
@@ -37,14 +37,12 @@
         </li>
     </ul>
     <form class="form-inline" action="/search" method="GET">
-        @csrf
         <input class="form-control" placeholder="Search" aria-label="Search" name = "result" style="width:300px; margin-left:90px; margin-top:10px;">
         <button class="btn btn-outline-danger" type="submit" style="margin-top: 10px;">Search</button>
     </form>
     </div>
 </nav>
-<form action="/cart" method="get">
-    @csrf
+<form action="/cart" method="GET">
     <button type="submit" class=" btn-link cart" style="color:white;">
         <i class="fas fa-shopping-cart fa-2x"></i>
         <div style="width:25px; height:25px; border-radius:20px; background-color: red; position: relative; margin-left:50px; margin-top:-15px;">

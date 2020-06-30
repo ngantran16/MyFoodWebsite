@@ -29,6 +29,7 @@ class CartController extends Controller
         return view("user.cart",['carts'=>$cart]);
     }
     function addToCart($id_pro){
+        if (isset(Auth::user()->id)){
         $id_user = Auth::user()->id;
         $cart = DB::table('carts')->where('product_id','=',$id_pro,'and','id_user','=',$id_user)->first();
         if (!$cart){
@@ -47,7 +48,10 @@ class CartController extends Controller
         }
 
         return redirect ('home')->with('alert', 'Add to cart successful!');
+    } else{
+        return redirect()->back()->with('alert', 'You must login to buy products!');
     }
+}
 
     function destroyCartPro($id_product){
         DB::table('carts')->where ('product_id','=',$id_product)->delete();
@@ -67,7 +71,6 @@ class CartController extends Controller
                 $quantity = $quantity - 1;
             }
         }
-
         $cart = Cart::where('product_id','=',$id, 'and', 'user_id','=',$id_user)->first();
             $cart->quantity = $quantity;
             $cart->save();

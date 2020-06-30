@@ -30,6 +30,7 @@ Route::get('/admin/products',"Admin\DashBoardController@showProducts");
 Route::get('/admin/categories',"Admin\DashBoardController@showCategories");
 Route::get('/admin/users',"Admin\DashBoardController@showUsers");
 Route::get('/admin/orders',"Admin\DashBoardController@showOrders");
+Route::get('/admin/order/view/{id}',"Admin\DashboardController@orderHistory");
 
 Route::delete('/admin/product/{id}', "Admin\DashBoardController@destroyProduct");
 Route::delete('/admin/category/{id}',"Admin\DashBoardController@destroyCategory");
@@ -52,5 +53,5 @@ Route::get('/order',"User\OrderController@index");
 
 Route::post('/payment',"User\OrderController@paymentProduct");
 
-
 Route::get('/search',"User\HomeController@getSearch");
+Route::get('/home/category/{id}',"User\HomeController@showProductCategory");
