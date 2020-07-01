@@ -14,6 +14,7 @@ use App\Category;
 use App\User;
 use App\Order;
 use App\Cart;
+use App\Discount;
 
 use function GuzzleHttp\json_decode;
 
@@ -125,6 +126,15 @@ class DashboardController extends Controller
         $pro = json_decode($order->product);
         $order->product = $pro;
         return view('admin.product.orderview',['order' => $order]);
+    }
+
+    function showDiscount(){
+        $discounts = Discount::all();
+        return view('admin.discount.index',['discounts' => $discounts]);
+    }
+    function destroyDiscount($id){
+        Discount::find($id)->delete();
+        return redirect('/admin/discounts');
     }
 
 }

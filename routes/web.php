@@ -38,7 +38,11 @@ Route::delete('/admin/category/{id}',"Admin\DashBoardController@destroyCategory"
 Route::get('/admin/product/{id}/edit','Admin\DashboardController@editProduct');
 Route::patch('/admin/product/{id}','Admin\DashboardController@updateProduct');
 
+Route::get('/admin/discounts',"Admin\DashboardController@showDiscount");
+Route::delete('/admin/discount/{id}',"Admin\DashboardController@destroyDiscount");
+
 Route::post('/details/{id}',"User\HomeController@details");
+Route::get('/details/{id}',"User\HomeController@details");
 
 Route::post('/addToCart/{id}',"User\CartController@addToCart");
 Route::get('/cart',"User\CartController@index");
@@ -55,3 +59,5 @@ Route::post('/payment',"User\OrderController@paymentProduct");
 
 Route::get('/search',"User\HomeController@getSearch");
 Route::get('/home/category/{id}',"User\HomeController@showProductCategory");
+
+Route::post('/details/{id}/comment',"User\HomeController@comment");

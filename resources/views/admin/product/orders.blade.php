@@ -15,7 +15,7 @@
     <div class="col-sm-3" style="background-color:lavender;">
         @include('partials/menu')
     </div>
-    <div class="col-sm-9" style="background-color:lavender;">
+    <div class="col-sm-9" style="background-color:#C6E2FF">
         <h3 style="text-align: center;">ORDERS' INFORMATION</h3>
         <div class = "container">
             <table class="table table-striped" style="width:100%;">
@@ -31,7 +31,6 @@
                     <th>Total</th>
                     <th>Status</th>
                     <th>View</th>
-                    <th>Delete</th>
                 </tr>
                 </thead>
                 <?php $i = 1?>
@@ -41,22 +40,21 @@
                             <td> {{ $i++ }} </td>
                             <td> {{ $order->id_user }} </td>
                             <td> {{ $order->name }}</td>
-                            <td> {{ $order->product }} </td>
+                            <td>
+                            <?php $products = json_decode($order->product) ?>
+                            @foreach ($products as $product)
+                                {{ $product->name }}
+                                <br>
+                            @endforeach
+                            </td>
                             <td> {{ $order->address }} </td>
                             <td> {{ $order->email }} </td>
                             <td> {{ $order->phone_number }} </td>
-                            <td> {{ $order->total }} </td>
+                            <td> {{ number_format($order->total,0,',','.')." VND" }} </td>
                             <td> {{ $order->status }} </td>
                             <td>
                                 <form action="{{'/admin/order/view/'.$order->id}}" method="GET">
                                     <button type="submit" class ="btn btn-link">View</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form action="{{'/admin/order/'.$order->id}}" method="POST">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class = "btn btn-link">Delete</button>
                                 </form>
                             </td>
                         </tr>

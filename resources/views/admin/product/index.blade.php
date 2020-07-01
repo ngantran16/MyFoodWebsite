@@ -15,7 +15,7 @@
         <div class="col-sm-3" style="background-color:lavender;">
             @include('partials/menu')
         </div>
-        <div class="col-sm-9" style="background-color:lavender;">
+        <div class="col-sm-9" style="background-color:#C6E2FF;">
             <h3 style="text-align: center;">PRODUCT'S INFORMATION</h3>
     <div class = "container">
         <a href="/product/create">Add a product</a>

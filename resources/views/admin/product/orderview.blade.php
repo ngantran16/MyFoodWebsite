@@ -41,7 +41,7 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->quantity }}</td>
-                                <td>{{ number_format ($order->total,0,',','.')." VND" }}</td>
+                                <td>{{ number_format ($item->price * $item->quantity,0,',','.')." VND" }}</td>
                             </tr>
                         @endforeach
                     </tbody>

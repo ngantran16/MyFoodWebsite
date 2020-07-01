@@ -8,6 +8,7 @@
                 <li class="active"><a href="#">Products</a></li>
                 <li><a href="../admin/products">Products List</a></li>
                 <li><a href="../admin/categories">Categories List</a></li>
+                <li><a href="../admin/discounts">Discounts List</a></li>
             </ul>
             <h5><i class="glyphicon glyphicon-user"></i>
                 <small><b>USERS</b></small>

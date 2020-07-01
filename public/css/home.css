@@ -134,8 +134,64 @@ a:hover {
     border: none;
     color:white;
     background-color:#E55B3C	;
-    /* margin-top:-32px;
-    margin-right:-29px; */
+}
+.btn:hover{
+    background: none;
+    color:orange;
+    border-color: orangered;
+}
+.nav-link:hover{
+    background: none;
+    color:orange;
+}
+.navbar-brand:hover{
+    background: none;
+    color:orange;
+}
+.sale {
+    float: right;
+    background: #ED1C24;
+    color: #fff;
+    padding: 12px 8px;
+    border-radius: 100%;
+    width:49px;
+    height:43px;
+    position: relative;
+    margin-top:-25px;
+}
+.clearfix {
+    width: 95%;
+    margin: 3%;
+ transition: all 0.5s ease;
+}
+.clearfix:hover {
+    transform: scale(1.1, 1.1);
+}
+.button_product{
+    margin-left:60px;
+}
+.detail{
+    position: relative;
+    margin-left:80px;
+    margin-top:-55px;
+    width:70px;
+    font-weight: bold;
+    background-color: #CD0000;
+    color:white;
+}
+.detail:hover{
+    background-color:#FFA500;
+    color:white;
+}
+.buy{
+    width:70px;
+    font-weight: bold;
+    background-color: #CD0000;
+    color:white;
+}
+.buy:hover{
+    background-color:#FFA500;
+    color:white;
 }
 
 

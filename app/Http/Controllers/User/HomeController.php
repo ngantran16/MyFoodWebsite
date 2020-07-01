@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Cart;
 use App\Category;
+use App\Comment;
+use App\Http\Requests\CommentRequest;
 
 class HomeController extends Controller
 {
@@ -57,7 +59,8 @@ class HomeController extends Controller
     function details($id){
         $details = Detail::where('product_id',$id)->get();
         $product = Product::find($id);
-        return view('user.detail',['details'=>$details, 'product' => $product]);
+        $comments = Comment::where('product_id',$id)->get();
+        return view('user.detail',['details'=>$details, 'product' => $product,'comments' => $comments]);
     }
     function getSearch(Request $request){
         $result = $request->result;
@@ -66,16 +69,38 @@ class HomeController extends Controller
     }
 
     function sortdesc(){
-        $products = Product::select('id','name','image','price','quantity','star')->orderBy('price', 'desc')->get();
+        $products = Product::select('id','name','image','price','quantity','star','sale')->orderBy('price', 'desc')->get();
         return $products;
     }
     function sortasc(){
-        $products = Product::select('id','name','image','price','quantity','star')->orderBy('price')->get();
+        $products = Product::select('id','name','image','price','quantity','star','sale')->orderBy('price')->get();
         return $products;
     }
     function showProductCategory($id){
         $products = Product::where('category_id',$id)->get();
         $category = Category::find($id);
         return view('user.category',['products' => $products, 'category' => $category->name]);
+    }
+    function comment($id, CommentRequest $request){
+        if (isset(Auth::user()->id)){
+            $id_user = Auth::user()->id;
+            $name = $request->name;
+            $email = $request->email;
+            $content = $request->content;
+
+            $request->validated();
+            $comment = new Comment;
+            $comment->id_user = $id_user;
+            $comment->product_id = $id;
+            $comment->name = $name;
+            $comment->email = $email;
+            $comment->content = $content;
+            $comment->save();
+            return redirect('details/'.$id);
+    }
+    else
+    {
+        return redirect()->back()->with('alert', 'You must login to comment!');
+    }
     }
 }

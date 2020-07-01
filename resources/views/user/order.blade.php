@@ -49,7 +49,7 @@
                                             @foreach ($item->products as $product)
                                                 <div class="col-xs-12"><small>Unit price:
                                                     <span>
-                                                    <?php echo number_format($product->price,0,',','.')." VND"; ?>
+                                                        {{ number_format($product->price,0,',','.')." VND" }}
                                                     </span></small>
                                                 </div>
                                             @endforeach
@@ -57,7 +57,7 @@
                                         <div class="col-sm-3 col-xs-3 text-right">
                                             <h6>
                                                 @foreach ($item->products as $product)
-                                                    <?php echo number_format($product->price * $item->quantity,0,',','.')." VND"; ?>
+                                                    {{ number_format($product->price * $item->quantity,0,',','.')." VND" }}
                                                 @endforeach
                                             </h6>
                                         </div>
@@ -69,7 +69,27 @@
                                     <div class="col-xs-12">
                                         <strong>Order Total</strong>
                                         <div class="pull-right">
-                                            <b><?php echo number_format($total,0,',','.')." VND"; ?></b>
+                                            <b>{{ number_format($total,0,',','.')." VND" }} </b>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <strong>Discount</strong>
+                                        <div class="pull-right">
+                                            <b>
+                                                @if (Session::has('discount'))
+                                                   {{ Session::get('discount') }}%
+                                                @endif
+                                            </b>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <strong>Total</strong>
+                                        <div class="pull-right">
+                                            <b>
+                                                @if (Session::has('discount'))
+                                                   {{ number_format($total - (Session::get('discount')*$total)/100,0,',','.')." VND" }}
+                                                @endif
+                                            </b>
                                         </div>
                                     </div>
                                 </div>

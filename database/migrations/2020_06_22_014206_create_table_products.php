@@ -20,6 +20,7 @@ class CreateTableProducts extends Migration
             $table->double('price');
             $table->integer('quantity');
             $table->integer('star');
+            $table->integer('sale');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
 

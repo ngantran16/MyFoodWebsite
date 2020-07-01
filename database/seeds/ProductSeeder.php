@@ -20,6 +20,7 @@ class ProductSeeder extends Seeder
 	            'price' => 69000,
                 'quantity'=> 20,
                 'star' => 4,
+                'sale' =>20,
                 'category_id'=> 1
             ],[
                 'id' => 2,
@@ -28,6 +29,7 @@ class ProductSeeder extends Seeder
                 'price' => 79000,
                 'quantity'=> 20,
                 'star' => 4,
+                'sale' =>30,
                 'category_id'=> 1
             ],[
                 'id' => 3,
@@ -36,6 +38,7 @@ class ProductSeeder extends Seeder
                 'price' => 89000,
                 'quantity'=> 20,
                 'star' => 4,
+                'sale' =>50,
                 'category_id'=> 1
             ],[
                 'id' => 4,
@@ -44,6 +47,7 @@ class ProductSeeder extends Seeder
                 'price' => 99000,
                 'quantity'=> 20,
                 'star' => 4,
+                'sale' =>40,
                 'category_id'=> 2
             ],[
                 'id' => 5,
@@ -52,6 +56,7 @@ class ProductSeeder extends Seeder
                 'price' => 99000,
                 'quantity'=> 20,
                 'star' => 5,
+                'sale' =>20,
                 'category_id'=> 2
             ],[
                 'id' => 6,
@@ -60,6 +65,7 @@ class ProductSeeder extends Seeder
                 'price' => 50000,
                 'quantity'=> 20,
                 'star' => 5,
+                'sale' =>10,
                 'category_id'=> 4
             ],[
                 'id' => 7,
@@ -68,6 +74,7 @@ class ProductSeeder extends Seeder
                 'price' => 60000,
                 'quantity'=> 20,
                 'star' => 5,
+                'sale' =>20,
                 'category_id'=> 4
             ],[
                 'id' => 8,
@@ -76,6 +83,7 @@ class ProductSeeder extends Seeder
                 'price' => 80000,
                 'quantity'=> 20,
                 'star' => 5,
+                'sale' =>30,
                 'category_id'=> 4
             ],[
                 'id' => 9,
@@ -84,6 +92,7 @@ class ProductSeeder extends Seeder
                 'price' => 90000,
                 'quantity'=> 20,
                 'star' => 5,
+                'sale' =>50,
                 'category_id'=> 3
             ],[
                 'id' => 10,
@@ -92,6 +101,7 @@ class ProductSeeder extends Seeder
                 'price' => 100000,
                 'quantity'=> 20,
                 'star' => 5,
+                'sale' =>60,
                 'category_id'=> 3
             ]
             ]);

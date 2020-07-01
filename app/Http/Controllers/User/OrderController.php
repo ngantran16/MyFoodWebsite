@@ -59,6 +59,7 @@ class OrderController extends Controller
              }
             $i++;
         }
+        $total = $total - ($total *  $request->session()->get('discount'))/100;
        $list=[];
         for($j =0; $j<$i; $j++){
             array_push($list,$arr[$j]);

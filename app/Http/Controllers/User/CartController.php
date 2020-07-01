@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Cart;
+use App\Discount;
 
 class CartController extends Controller
 {
@@ -26,7 +27,14 @@ class CartController extends Controller
         }
         $request->session()->put('quantity', $quantity);
 
-        return view("user.cart",['carts'=>$cart]);
+        if(isset($request->discount)){
+            $discount =  $this->discountApply($request->discount);
+        } else{
+            $discount = 0;
+        }
+        $request->session()->put('discount', $discount);
+
+        return view("user.cart",['carts'=>$cart, 'discount' => $discount]);
     }
     function addToCart($id_pro){
         if (isset(Auth::user()->id)){
@@ -75,5 +83,14 @@ class CartController extends Controller
             $cart->quantity = $quantity;
             $cart->save();
         return redirect('cart');
+    }
+    function discountApply($coupon){
+        $couponn = Discount::where('code','=',$coupon)->first();
+        if ($couponn){
+            return $couponn->sale;
+        } else{
+            return 0;
+        }
+
     }
 }

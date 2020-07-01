@@ -16,30 +16,26 @@
             @include('partials/menu')
         </div>
         <div class="col-sm-9" style="background-color:#C6E2FF;">
-            <h3 style="text-align: center;">CATEGORIES' INFORMATION</h3>
+            <h3 style="text-align: center;">DISCOUNTS' INFORMATION</h3>
             <div class = "container">
                 <table class="table table-striped" style="width:100%;">
                     <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Name</th>
-                        <th>Update</th>
+                        <th>Code</th>
+                        <th>Sale</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <?php $i = 1?>
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($discounts as $discount)
                             <tr>
                                 <td> {{ $i++ }} </td>
-                                <td> {{ $category->name }} </td>
+                                <td> {{ $discount->code }} </td>
+                                <td> {{ $discount->sale }}%</td>
                                 <td>
-                                    <form action="{{'/admin/category/'.$category->id.'/edit'}}" method="GET">
-                                        <button type="submit" class ="btn btn-link"><i class="fas fa-edit"></i></button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="{{'/admin/category/'.$category->id}}" method="POST">
+                                    <form action="{{'/admin/discount/'.$discount->id}}" method="POST">
                                         @csrf
                                         @method("DELETE")
                                         <button type="submit" class = "btn btn-link"><i class="far fa-trash-alt"></i></button>

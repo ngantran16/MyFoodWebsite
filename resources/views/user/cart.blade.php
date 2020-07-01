@@ -34,7 +34,7 @@
                         <tr>
                             <td><img src='{{'/storage/'.$cart->image }}' alt="" style="width:150px; height:100px;"></td>
                             <td>{{ $cart->name}}</td>
-                            <td><?php echo number_format($cart->price,0,',','.')." VND"; ?></td>
+                            <td>{{ number_format($cart->price,0,',','.')." VND" }} </td>
                             <td>
                                 <form method="post" action="{{'/cart/update/'.$cart->id}}">
                                     @csrf
@@ -44,9 +44,7 @@
                                 </form>
                             </td>
                             <td>
-                                <?php
-                                    echo number_format($cart->price * $cart->quantity,0,',','.')." VND";
-                                ?>
+                                {{ number_format($cart->price * $cart->quantity,0,',','.')." VND" }}
                             </td>
                             <?php $total += $cart->price * $cart->quantity ?>
                             <td>
@@ -58,6 +56,14 @@
                             </td>
                         </tr>
                     @endforeach
+                        <tr>
+                            <form action="/cart" method="get">
+                                <td colspan="6">
+                                    <input class="form-control" type="text" name="discount" style="width:200px;" placeholder="Enter coupon">
+                                    <button class = "btn btn-primary" style="margin-left:210px; position: relative; margin-top:-35px;">Apply</button>
+                                </td>
+                            </form>
+                        </tr>
                 </tbody>
                 </table>
 
@@ -65,22 +71,28 @@
                 <div class = "payment">
                     <h3 style = "position:relative; left:530px;">Total money</h3>
                             <table class="table table-bordered" style = "width:500px; position:relative; left:530px;">
-                            <thead>
-                            <tr>
-                                <th>
-                                    <div class = "col-sm-6">Provisional total:</div>
-                                    <div class = "col-sm-6"> <?php echo number_format($total,0,',','.')." VND"; ?></div>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                            <th>
-                                <div class = "col-sm-6">Total:</div>
-                                <div class = "col-sm-6"><?php  echo number_format($total,0,',','.')." VND"; ?></div>
-                            </th>
-                            </tr>
-                            </tbody>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class = "col-sm-6">Provisional total:</div>
+                                            <div class = "col-sm-6"> {{ number_format($total,0,',','.')." VND" }} </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <div class = "col-sm-6">Discount:</div>
+                                            <div class = "col-sm-6">{{ $discount }} % </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class = "col-sm-6">Total:</div>
+                                            <div class = "col-sm-6">{{ number_format($total - ($total * $discount)/100,0,',','.')." VND"}} </div>
+                                        </th>
+                                    </tr>
+                                </tbody>
                         </table>
                         <form method="GET" action="/order">
                             <button class="btn btn-warning btn-pay">Payment</button>

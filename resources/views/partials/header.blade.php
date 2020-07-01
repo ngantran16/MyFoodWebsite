@@ -1,7 +1,18 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <p>
         @if(Auth::user())
-        <p style = "color:white;">Welcome: {{Auth::user()->username}}</p>
+        {{-- <p style = "color:white;">Welcome: {{Auth::user()->username}}</p> --}}
+        <div class="dropdown">
+            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            style="color:white; font-weight:bold; border:none; font-size:20px;">
+                <i class="far fa-user"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Your profile</a>
+              <a class="dropdown-item" href="#">Pay in 21APay</a>
+              <a class="dropdown-item" href="#">Purchase history</a>
+            </div>
+          </div>
         @endif
     </p>
     <br><br>
