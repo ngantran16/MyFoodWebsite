@@ -32,9 +32,11 @@ class OrderController extends Controller
         $email = $request->email;
 
         $request->validated();
+
         $id_user = Auth::user()->id;
         $name = $firstname.'  '.$lastname;
         $address = $address.'  '.$city;
+        $discount = $request->session()->get('discount');
 
         $carts = Cart::where('id_user','=',$id_user)->get();
         foreach($carts as $cart){
@@ -74,10 +76,12 @@ class OrderController extends Controller
         $order->email = $email;
         $order->phone_number = $phonenumber;
         $order->total = $total;
+        $order->discount = $discount;
         $order->status = 'checking';
         $order->save();
 
         $carts = Cart::where('id_user','=',$id_user)->delete();
+        $request->session()->forget('discount');
 
         return redirect('/home');
     }

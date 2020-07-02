@@ -15,6 +15,7 @@ use App\User;
 use App\Order;
 use App\Cart;
 use App\Discount;
+use App\Comment;
 
 use function GuzzleHttp\json_decode;
 
@@ -41,6 +42,13 @@ class DashboardController extends Controller
         return view('admin.product.orders',['orders' => $orders]);
     }
 
+    function destroyUser($id){
+        Cart::where('id_user',$id)->delete();
+        Order::where('id_user',$id)->delete();
+        Comment::where('id_user',$id)->delete();
+        User::find($id)->delete();
+        return redirect('/admin/users');
+    }
     function destroyProduct($id){
         Detail::where('product_id',$id)->delete();
         Cart::where('product_id',$id)->delete();
@@ -102,6 +110,7 @@ class DashboardController extends Controller
         $content = $request->detail;
         $price = $request->price;
         $quantity = $request->quantity;
+        $sale = $request->sale;
         $request->validated();
         $category = $request->get('category');
 
@@ -111,6 +120,7 @@ class DashboardController extends Controller
         $product->price = $price;
         $product->quantity = $quantity;
         $product->star = 4;
+        $product->sale = $sale;
         $product->category_id = $category;
         $product->save();
 
@@ -135,6 +145,12 @@ class DashboardController extends Controller
     function destroyDiscount($id){
         Discount::find($id)->delete();
         return redirect('/admin/discounts');
+    }
+    function confirm($id){
+        $order = Order::find($id);
+        $order->status = 'Shipping';
+        $order->save();
+        return redirect('/admin/orders');
     }
 
 }

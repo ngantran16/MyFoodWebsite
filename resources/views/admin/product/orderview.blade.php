@@ -17,6 +17,8 @@
            <p><span style="font-weight: bold; margin-left:50px;"> Address: </span> {{ $order->address }}</p>
            <p><span style="font-weight: bold; margin-left:50px;"> Email: </span> {{ $order->email }}</p>
            <p><span style="font-weight: bold; margin-left:50px;"> Phone Number: </span> {{ $order->phone_number }}</p>
+           <p> <span style="font-weight: bold; margin-left:50px;"> Payment: {{ number_format($order->total,0,',','.')." VND" }} </span> </p>
+           <p><span style="font-weight: bold; margin-left:50px;"> Discount: </span> {{ $order->discount }}%</p>
         </div>
         <div class="col-sm-9" style="background-color:#F8F8FF;">
             <h3 style="text-align: center;">ORDERS HISTORY</h3>
@@ -39,7 +41,7 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->price }}</td>
+                                <td>{{ number_format ($item->price,0,',','.')." VND" }}</td>
                                 <td>{{ $item->quantity }}</td>
                                 <td>{{ number_format ($item->price * $item->quantity,0,',','.')." VND" }}</td>
                             </tr>

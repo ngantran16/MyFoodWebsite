@@ -26,7 +26,7 @@ class CartController extends Controller
             $quantity += $item->quantity;
         }
         $request->session()->put('quantity', $quantity);
-
+        $request->session()->forget('discount');
         if(isset($request->discount)){
             $discount =  $this->discountApply($request->discount);
         } else{

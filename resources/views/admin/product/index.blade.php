@@ -41,7 +41,7 @@
                         <td> {{ $product->category->name }}</td>
                         <td> <img src="{{'/storage/'.$product->image}}" width="100px" height="60px">
                         </td>
-                        <td> {{ $product->price }} </td>
+                        <td> {{ number_format($product->price ,0,',','.')." VND" }}</td>
                         <td> {{ $product->quantity }} </td>
                         <td>
                             <form action="{{'/admin/product/'.$product->id.'/edit'}}" method="GET">

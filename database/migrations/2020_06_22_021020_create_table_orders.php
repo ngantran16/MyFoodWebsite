@@ -22,6 +22,7 @@ class CreateTableOrders extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->double('total');
+            $table->integer('discount');
             $table->string('status');
             $table->timestamps();
 

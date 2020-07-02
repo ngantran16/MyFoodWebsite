@@ -48,6 +48,11 @@
             </div>
 
             <div class="form-group">
+                <label for="sale">Sale:</label>
+                <input id="sale" class="form-control" name = "sale">
+            </div>
+
+            <div class="form-group">
                 <label for="image">Image:</label>
                 <input class="form-control" type = "file" name = "image">
                 @error('image')

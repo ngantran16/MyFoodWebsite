@@ -29,6 +29,7 @@
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Total</th>
+                    <th>Discount</th>
                     <th>Status</th>
                     <th>View</th>
                 </tr>
@@ -51,7 +52,14 @@
                             <td> {{ $order->email }} </td>
                             <td> {{ $order->phone_number }} </td>
                             <td> {{ number_format($order->total,0,',','.')." VND" }} </td>
-                            <td> {{ $order->status }} </td>
+                            <td> {{ $order->discount }}%</td>
+                            <td>
+                                {{ $order->status }} <br>
+                                <form action="{{'/admin/order/confirm/'.$order->id}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class ="btn-success">Confirm</button>
+                                </form>
+                            </td>
                             <td>
                                 <form action="{{'/admin/order/view/'.$order->id}}" method="GET">
                                     <button type="submit" class ="btn btn-link">View</button>
