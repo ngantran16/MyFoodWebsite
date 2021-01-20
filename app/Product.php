@@ -10,6 +10,7 @@ class Product extends Model
         return $this->belongsTo("App\Category","category_id","id");
     }
 
+    //Detail product
     public function detail(){
      return $this->hasOne("App\Detail","product_id","id");
     }
